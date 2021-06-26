@@ -1,0 +1,7 @@
+setup.py
+histeditor/__init__.py
+histeditor/histeditor.py
+histeditor.egg-info/PKG-INFO
+histeditor.egg-info/SOURCES.txt
+histeditor.egg-info/dependency_links.txt
+histeditor.egg-info/top_level.txt
