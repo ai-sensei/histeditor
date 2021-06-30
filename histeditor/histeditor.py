@@ -61,7 +61,7 @@ class HistEditor:
         data_y = make_dataxy(hist[data_len:], pre_len, 0, ydata=False)
 
         if norm:
-            return normalize(data_x), data_y
+            return normalize(data_x), normalize(data_y)
         else:
             return data_x, data_y
 
