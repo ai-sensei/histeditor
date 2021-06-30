@@ -52,6 +52,19 @@ class HistEditor:
         else:
             return data_x, data_y
 
+    def make_dataset1d_2(self, norm=False):
+        hist = np.array(self.origin)[self.minutes - 1:][::self.minutes]
+        data_len = int(self.data_min / self.minutes)
+        pre_len = int(self.pre_min / self.minutes)
+
+        data_x = make_dataxy(hist, data_len, pre_len, ydata=False)
+        data_y = make_dataxy(hist[data_len:], pre_len, 0, ydata=False)
+
+        if norm:
+            return normalize(data_x), data_y
+        else:
+            return data_x, data_y
+
     def make_dataset2d(self, norm=False):
         hist = self.origin
         data_len = int(self.data_min / self.minutes)
