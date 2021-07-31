@@ -40,7 +40,7 @@ class HistEditor:
         self.data_min = data_min
         self.pre_min = pre_min
 
-    def make_dataset1d(self, norm=False):
+    def make_dataset1d(self, norm=False, dtype='float32'):
         hist = np.array(self.origin)[self.minutes - 1:][::self.minutes]
         data_len = int(self.data_min / self.minutes)
         pre_len = int(self.pre_min / self.minutes)
@@ -48,11 +48,11 @@ class HistEditor:
         data_x, data_y = make_dataxy(hist, data_len, pre_len)
 
         if norm:
-            return normalize(data_x), data_y
+            return normalize(data_x).astype(dtype), data_y.astype(dtype)
         else:
-            return data_x, data_y
+            return data_x.astype(dtype), data_y.astype(dtype)
 
-    def make_dataset1d_2(self, norm=False):
+    def make_dataset1d_2(self, norm=False, dtype='float32'):
         hist = np.array(self.origin)[self.minutes - 1:][::self.minutes]
         data_len = int(self.data_min / self.minutes)
         pre_len = int(self.pre_min / self.minutes)
@@ -61,11 +61,11 @@ class HistEditor:
         data_y = make_dataxy(hist[data_len:], pre_len, 0, ydata=False)
 
         if norm:
-            return normalize(data_x), normalize(data_y)
+            return normalize(data_x).astype(dtype), normalize(data_y).astype(dtype)
         else:
-            return data_x, data_y
+            return data_x.astype(dtype), data_y.astype(dtype)
 
-    def make_dataset2d(self, norm=False):
+    def make_dataset2d(self, norm=False, dtype='float32'):
         hist = self.origin
         data_len = int(self.data_min / self.minutes)
         pre_len = int(self.pre_min / self.minutes)
@@ -92,6 +92,6 @@ class HistEditor:
         data_x = np.array(ddd)
 
         if norm:
-            return normalize(data_x), data_y[data_len:]
+            return normalize(data_x).astype(dtype), data_y[data_len:].astype(dtype)
         else:
-            return data_x, data_y[data_len:]
+            return data_x.astype(dtype), data_y[data_len:].astype(dtype)
