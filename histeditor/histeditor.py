@@ -30,7 +30,7 @@ def normalize(data):
         mx = np.max(data.reshape(dim1, dim2 * dim3), axis=1).reshape(dim1, 1, 1)
         mn = np.min(data.reshape(dim1, dim2 * dim3), axis=1).reshape(dim1, 1, 1)
 
-    return (data - mn) / (mx - mn) + 1
+    return (data - mn) / (mx - mn)
 
 
 class HistEditor:
